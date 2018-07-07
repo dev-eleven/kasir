@@ -13,9 +13,7 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
-
     <?php $this->load->view('template/header'); ?>
-
     <div class="content-wrapper">
       <section class="content">
         <div class="row">
@@ -25,46 +23,40 @@
                 View Data
               </div>
               <div class="panel-body">
-                <table class="table">
-                  <?php foreach ($results as $key): ?>
-                    <tr>
-                      <td>Supplier</td>
-                      <td>
-                        <select class="form-control" disabled>
-                          <option><?= $key['supplier'] ?></option>
-                        </select>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Product</td>
-                      <td><input type="text" class="form-control" value="<?= $key['name'] ?>" disabled></td>
-                    </tr>
-                    <tr>
-                      <td>Stock</td>
-                      <td><input type="text" class="form-control" value="<?= $key['stock'] ?>" disabled></td>
-                    </tr>
-                    <tr>
-                      <td>Price</td>
-                      <td><input type="text" class="form-control" value="<?= $key['price'] ?>" disabled></td>
-                    </tr>
-                    <tr>
-                      <td>Type</td>
-                      <td>
-                        <select class="form-control" disabled>
-                          <?php 
-                            if ($key['type'] == 1) {
-                              echo "<option>Hot Drinks</option>";
-                            }elseif ($key['type'] == 2) {
-                              echo "<option>Cold Drinks</option>";
-                            }else{
-                              echo "<option>Food</option>";
-                            }
-                          ?>
-                        </select>
-                      </td>
-                    </tr>
-                  <?php endforeach ?>
-                </table>
+                <?php foreach ($results as $key): ?>
+                  <div class="row">
+                    <div class="col-md-4">
+                        <label>Supplier</label>
+                        <input type="text" class="form-control" value="<?= $key['supplier'] ?>" disabled>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="row">
+                        <div class="col-md-7">
+                          <label>Product</label>
+                            <input type="text" name="product" class="form-control" value="<?= $key['name'] ?>" disabled>
+                        </div>
+                        <div class="col-md-2 col-xs-6">
+                          <label>Stocks</label>
+                          <input type="number" name="stock" class="form-control" value="<?= $key['stock'] ?>" disabled>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                          <label>Type</label>
+                          <select class="form-control" disabled>
+                            <?php 
+                              if ($key['type'] == 1) {
+                                echo "<option>Drinks</option>";
+                              }elseif ($key['type'] == 2) {
+                                echo "<option>Food</option>";
+                              }else{
+                                echo "<option>Tool</option>";
+                              }
+                            ?>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <?php endforeach ?>
               </div>
               <div class="panel-footer">
                 <div class="row">

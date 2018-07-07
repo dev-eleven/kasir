@@ -22,46 +22,47 @@
           <div class="col-lg-12 col-xs-12">
             <div class="box box-primary">
               <div class="box-header with-border">
-                <h3 class="box-title">Data Supplier | <a href="<?php echo base_url() ?>suppliers/add">Tambah Data</a></h3>
+                <h3 class="box-title">Data Supplier</h3>
                 <div class="box-tools">
-                  <form method="post">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                      <input type="text" name="search" class="form-control pull-right" placeholder="Search">
-                      <div class="input-group-btn">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                      </div>
-                    </div>
-                  </form>   
+                  <div class="input-group input-group-sm" style="width: 50px;">
+                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-search"></i> Search</button>
+                  </div>
                 </div>
               </div>
               <!-- /.box-header -->
               <?php if (isset($results)) { ?>
-              <div class="box-body">
-                <table class="table table-hover">
-                  <tr>
-                    <th style="width: 10px">No</th>
-                    <th>Person Name</th>
-                    <th>Phone</th>
-                    <th style="width: 120px">Action</th>
-                  </tr>
-                  <?php 
-                    $no = 1;
-                    foreach ($results as $key): ?>
-                    <tr>
-                      <td><?php echo $no++ ?></td>
-                      <td><?= $key['person_name'] ?></td>
-                      <td><?= $key['phone'] ?></td>
-                      <td>
-                        <div class="input-group-btn">
-                          <a href="<?php echo base_url('suppliers/view/').$key['id']?>" class="btn btn-success"><i class="fa fa-eye"></i></a>
-                          <a href="<?php echo base_url('suppliers/update/').$key['id']?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                          <a href="<?php echo base_url('suppliercontroller/delete/').$key['id']?>" class="btn btn-danger" onclick="return doconfirm();"><i class="fa fa-trash"></i></a>
-                        </div>
-                      </td>
-                    </tr>
-                  <?php endforeach ?>
-                </table>
-              </div>
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover no-margin">
+                      <tr>
+                        <th style="width: 10px">No</th>
+                        <th>Name</th>
+                        <th>Company</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th style="width: 120px">Action</th>
+                      </tr>
+                      <?php 
+                        $no = 1;
+                        foreach ($results as $key): ?>
+                        <tr>
+                          <td><?php echo $no++ ?></td>
+                          <td><?= $key['person_name'] ?></td>
+                          <td><?= $key['company_name'] ?></td>
+                          <td><?= $key['email'] ?></td>
+                          <td><?= $key['phone'] ?></td>
+                          <td>
+                            <div class="input-group-btn">
+                              <a href="<?php echo base_url('suppliers/view/').$key['id']?>" class="btn btn-success"><i class="fa fa-eye"></i></a>
+                              <a href="<?php echo base_url('suppliers/update/').$key['id']?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                              <a href="<?php echo base_url('suppliercontroller/delete/').$key['id']?>" class="btn btn-danger" onclick="return doconfirm();"><i class="fa fa-trash"></i></a>
+                            </div>
+                          </td>
+                        </tr>
+                      <?php endforeach ?>
+                    </table>
+                  </div>
+                </div>
               <?php } ?>
               <!-- /.box-body -->
               <div class="box-footer clearfix">
@@ -76,6 +77,43 @@
     </div>
 
     <?php $this->load->view('template/footer'); ?>
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Search Data</h4>
+          </div>
+          <form method="post">
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Name</label>
+                  <input type="text" name="name" class="form-control" placeholder="Search name">
+                </div>
+                <div class="col-md-6">
+                  <label>Company</label>
+                  <input type="text" name="company" class="form-control" placeholder="Search company">
+                </div>
+                <div class="col-md-6">
+                  <label>Email</label>
+                  <input type="text" name="email" class="form-control" placeholder="Search email">
+                </div>
+                <div class="col-md-6">
+                  <label>Phone</label>
+                  <input type="text" name="phone" class="form-control" placeholder="Search phone">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" name="search">Search</button>
+            </div>
+          </form>
+          
+        </div>
+      </div>
+    </div>
 
   </div>
 

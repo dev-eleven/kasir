@@ -3,54 +3,24 @@
 class UserController extends CI_Controller{
 	function __construct(){
 		parent::__construct();
-		$this->load->helper('url_helper');
-		$this->load->model('users');
-		$this->load->library('pagination');
+		if ($this->session->userdata('status') != 'login') {
+			$this->session->set_flashdata('login_gagal','silakan login terlebih dahulu.');
+			redirect(base_url());
+		}
 	}
-	
-	public function login(){
-		if ($this->session->userdata('status') == 'login') {
-            $this->session->set_flashdata('login_sukses', 'Anda sudah login. Silahkan logut terlebih dahulu!');
-            redirect(base_url('inventaris'));
-        }else{
-        	if (isset($_POST['button'])) {
-	        	$email = $_POST['email'];
-	        	$password = md5($_POST['password']);
-	        	$login = $this->users->login($email,$password);
-	        	if ($login) {
-	        		$data = [
-		        		'user_id' => $users_id,
-		        		'email'   => $email,
-		        		'logged_in' => true,
-	                    'status'    => 'login'
-                	];
-                	$this->session->set_userdata($data);
-                	redirect(base_url('inventaris'));
-	        	}else {
-	                $this->session->set_flashdata('login_failed', 'email dan password salah.');
-	                redirect(base_url());
-            	}
-	        }else{
-	        	$this->load->view('users/login');
-	        }
-        }
-	}
-
-	public function logout()
-    {
-        $this->session->sess_destroy();
-        redirect(base_url());
-    }
 
 	public function index(){
 		$params = array();
 		$limit 	= 10;
 		$offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 		$jumlah_data = $this->users->jumlah_data();
-		$search = '';
+		$search = array();
 
 		if (isset($_POST['search'])) {
-			$search = $_POST['search'];
+			$search = [
+				"email" => $_POST['email'],
+				"level" => $_POST['level']
+			];
 		}
 		
 		if ($jumlah_data > 0) {

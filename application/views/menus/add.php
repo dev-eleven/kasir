@@ -3,11 +3,12 @@
 <head>
 	<meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Warung Kopi || Suppliers</title>
+	<title>Warung Kopi || Menus</title>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/ionicons.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/select2.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/AdminLTE.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/_all-skins.min.css">
 </head>
@@ -28,20 +29,32 @@
                 <div class="panel-body">
                   <div class="row">
                     <div class="col-md-4">
-                      <label>Person Name</label>
-                      <input type="text" name="person_name" class="form-control" required>
-                      <label>Company Name</label>
-                      <input type="text" name="company_name" class="form-control" required>
+                        <label>Product</label>
+                        <select class="form-control select2" style="width: 100%" name="product_id" required>
+                          <?php foreach ($results as $key): ?>
+                            <option value="<?= $key['id'] ?>"><?= $key['name'] ?></option>
+                          <?php endforeach ?>
+                        </select>
                     </div>
-                    <div class="col-md-4">
-                      <label>Email</label>
-                      <input type="Email" name="email" class="form-control" required>
-                      <label>Phone</label>
-                      <input type="number" name="phone" class="form-control" required>
-                    </div>
-                    <div class="col-md-4">
-                      <label>Address</label>
-                      <textarea name="address" class="form-control" rows="4" required></textarea>
+                    <div class="col-md-8">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label>Title</label>
+                          <input type="text" name="title" class="form-control" required>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                          <label>price</label>
+                          <input type="number" name="price" class="form-control" required>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                          <label>Type</label>
+                          <select class="form-control" name="type" required>
+                            <option value="1">Hot Drinks</option>
+                            <option value="2">Cold Drinks</option>
+                            <option value="3">Food</option>
+                          </select>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -49,7 +62,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <div class="pull-right">
-                        <a href="<?php echo base_url(); ?>suppliers" class="btn btn-default"><i class="fa fa-rotate-left"></i> Back</a>
+                        <a href="<?php echo base_url(); ?>menus" class="btn btn-default"><i class="fa fa-rotate-left"></i> Back</a>
                         <button name="button" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
                       </div>
                     </div>
@@ -59,7 +72,6 @@
             </div>
           </div>
         </div>
-        
       </section>
     </div>
 
@@ -73,5 +85,12 @@
   <script src="<?php echo base_url();?>assets/js/adminlte.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/jquery.slimscroll.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/demo.js"></script>
+  <script src="<?php echo base_url();?>assets/js/select2.full.min.js"></script>
+  <script>
+  $(function () {
+      //Initialize Select2 Elements
+      $('.select2').select2() 
+  })
+  </script>
 </body>
 </html>

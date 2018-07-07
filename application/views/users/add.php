@@ -26,25 +26,23 @@
               </div>
               <form method="post">
                 <div class="panel-body">
-                  <table class="table">
-                   <tr>
-                     <td>Email</td>
-                     <td><input type="Email" name="email" class="form-control"></td>
-                   </tr>
-                   <tr>
-                     <td>Level</td>
-                     <td>
-                       <select name="level" class="form-control">
-                         <option value="1">Admin</option>
-                         <option value="2">Kasir</option>
-                       </select>
-                     </td>
-                   </tr>
-                   <tr>
-                     <td>Password</td>
-                     <td><input type="Password" name="password" class="form-control"></td>
-                   </tr>
-                  </table>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label>Email</label>
+                      <input type="Email" name="email" class="form-control" required>
+                    </div>
+                    <div class="col-md-4">
+                      <label>Level</label>
+                      <select name="level" class="form-control" required>
+                        <option value="1">Admin</option>
+                        <option value="2">Kasir</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <label>Password</label>
+                      <input type="Password" name="password" class="form-control" required>
+                    </div>
+                  </div>
                 </div>
                 <div class="panel-footer">
                   <div class="row">

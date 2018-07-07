@@ -53,8 +53,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 //Kasir
 $route['kasir'] = 'kasircontroller/index';
 
-//Inventaris
-$route['inventaris'] = 'inventariscontroller/index';
+//Dashboard
+$route['dashboard'] = 'indexcontroller/index';
 
 //Users
 $route['users'] = 'usercontroller/index';
@@ -74,9 +74,25 @@ $route['suppliers/add'] = 'suppliercontroller/add';
 $route['suppliers/update/(:any)'] = 'suppliercontroller/update/$1';
 $route['suppliers/view/(:any)'] = 'suppliercontroller/view/$1';
 
+//Menus
+$route['menus'] = 'menucontroller/index';
+$route['menus/add'] = 'menucontroller/add';
+$route['menus/update/(:any)'] = 'menucontroller/update/$1';
+$route['menus/view/(:any)'] = 'menucontroller/view/$1';
+
+//inventories in
+$route['product_in'] = 'inventoriecontroller/product_in';
+$route['product_in/add'] = 'inventoriecontroller/product_in_add';
+$route['product_in/update/(:any)'] = 'inventoriecontroller/product_in_update/$1';
+
+//inventories out
+$route['product_out'] = 'inventoriecontroller/product_out';
+$route['product_out/add'] = 'inventoriecontroller/product_out_add';
+$route['product_out/update/(:any)'] = 'inventoriecontroller/product_out_update/$1';
+
 
 //Default
-$route['default_controller'] = 'usercontroller/login';
-$route['logout'] = 'usercontroller/logout';
+$route['default_controller'] = 'sessioncontroller/login';
+$route['logout'] = 'sessioncontroller/logout';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

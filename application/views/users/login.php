@@ -17,6 +17,12 @@
         <a href="<?php echo base_url();?>"><b>Warung</b> Kopi</a>
       </div>
       <form method="post">
+        <?php if ($this->session->flashdata('login_failed')): ?>
+          <?php echo "<p class='alert alert-danger' style='color:red;'>".$this->session->flashdata('login_failed')."</p>"; ?>
+        <?php endif; ?>
+        <?php if ($this->session->flashdata('login_gagal')): ?>
+          <?php echo "<p class='alert alert-danger' style='color:red;'>".$this->session->flashdata('login_gagal')."</p>"; ?>
+        <?php endif; ?>
         <div class="form-group has-feedback">
           <input type="email" class="form-control" placeholder="Email" name="email">
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

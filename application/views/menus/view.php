@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Warung Kopi || Suppliers</title>
+	<title>Warung Kopi || Menus</title>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
@@ -13,9 +13,7 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
-
     <?php $this->load->view('template/header'); ?>
-
     <div class="content-wrapper">
       <section class="content">
         <div class="row">
@@ -28,55 +26,43 @@
                 <?php foreach ($results as $key): ?>
                   <div class="row">
                     <div class="col-md-4">
-                      <label>Person Name</label>
-                      <input type="text" name="person_name" class="form-control" value="<?= $key['person_name'] ?>" disabled>
-                      <label>Company Name</label>
-                      <input type="text" name="company_name" class="form-control" value="<?= $key['company_name'] ?>" disabled>
+                        <label>Product</label>
+                        <input type="text" class="form-control" value="<?= $key['product'] ?>" disabled>
                     </div>
-                    <div class="col-md-4">
-                      <label>Email</label>
-                      <input type="Email" name="email" class="form-control" value="<?= $key['email'] ?>" disabled>
-                      <label>Phone</label>
-                      <input type="number" name="phone" class="form-control" value="<?= $key['phone'] ?>" disabled>
-                    </div>
-                    <div class="col-md-4">
-                      <label>Address</label>
-                      <textarea name="address" class="form-control" rows="4" disabled><?= $key['address'] ?></textarea>
+                    <div class="col-md-8">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <label>Title</label>
+                            <input type="text" class="form-control" value="<?= $key['title'] ?>" disabled>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                          <label>Price</label>
+                          <input type="number" class="form-control" value="<?= $key['price'] ?>" disabled>
+                        </div>
+                        <div class="col-md-3 col-xs-6">
+                          <label>Type</label>
+                          <select class="form-control" disabled>
+                            <?php 
+                              if ($key['type'] == 1) {
+                                echo "<option>Hot Drinks</option>";
+                              }elseif ($key['type'] == 2) {
+                                echo "<option>Cold Drinks</option>";
+                              }else{
+                                echo "<option>Food</option>";
+                              }
+                            ?>
+                          </select>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 <?php endforeach ?>
-                <div class="table-responsive" style="margin-top: 20px;">
-                  <table class="table table-bordered no-margin">
-                    <tr>
-                      <th style="width: 10px">No</th>
-                      <th>Product</th>
-                      <th>Type</th>
-                    </tr>
-                    <?php $no = 1; foreach ($product as $key): ?>
-                      <tr>
-                        <td><?php echo $no++ ?></td>
-                        <td><a href="<?php echo base_url('products/view/').$key['id']?>"><?= $key['name'] ?></a></td>
-                        <td>
-                          <?php
-                            if ($key['type'] == 1) {
-                              echo "Drinks";
-                            }elseif ($key['type'] == 2) {
-                              echo "Food";
-                            }elseif ($key['type'] == 3) {
-                              echo "Tool";
-                            }
-                          ?>
-                        </td>
-                      </tr>
-                    <?php endforeach ?>
-                  </table>
-                </div>
               </div>
               <div class="panel-footer">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="pull-right">
-                      <a href="<?php echo base_url(); ?>suppliers" class="btn btn-default"><i class="fa fa-rotate-left"></i> Back</a>
+                      <a href="<?php echo base_url(); ?>menus" class="btn btn-default"><i class="fa fa-rotate-left"></i> Back</a>
                     </div>
                   </div>
                 </div>

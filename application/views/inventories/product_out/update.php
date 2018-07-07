@@ -31,51 +31,50 @@
                   <?php foreach ($results as $key): ?>
                     <div class="row">
                       <div class="col-md-4">
-                          <label>Supplier</label>
-                          <select class="form-control select2" style="width: 100%" name="supplier_id">
-                            <?php foreach ($supplier as $keys): 
-                              if ($key['supplier_id'] == $keys['id']) { 
+                          <label>Product</label>
+                          <select class="form-control select2" style="width: 100%" name="product_id" required>
+                            <?php foreach ($product as $keys): 
+                              if ($key['products_id'] == $keys['id']) { 
                             ?>
-                              <option selected value="<?= $keys['id'] ?>"><?= $keys['person_name'] ?></option>
+                              <option value="<?= $keys['id'] ?>" selected><?= $keys['name'] ?></option>
                             <?php }else{ ?>
-                              <option value="<?= $keys['id'] ?>"><?= $keys['person_name'] ?></option>
+                              <option value="<?= $keys['id'] ?>"><?= $keys['name'] ?></option>
                             <?php  
                               }
                             ?>
                             <?php endforeach ?>
                           </select>
+                          <div class="row">
+                            <div class="col-md-5">
+                              <label>Quantity</label>
+                              <input type="number" name="quantity" class="form-control" value="<?= $key['quantity'] ?>">
+                            </div>
+                            <div class="col-md-7">
+                              <label>&nbsp;</label>
+                              <select name="unit_type" class="form-control" required>
+                                <option>Cups</option>
+                                <option>Grams</option>
+                                <option>Other</option>
+                              </select>
+                            </div>
+                          </div>
                       </div>
-                      <div class="col-md-8">
+                      <div class="col-md-4">
                         <div class="row">
-                          <div class="col-md-7">
-                            <label>Product</label>
-                              <input type="text" name="product" class="form-control" value="<?= $key['name'] ?>">
+                          <div class="col-md-12">
+                            <label>Date Out</label>
+                            <input type="text" name="date_out" id="datepicker" class="form-control" value="<?php echo date('m/d/Y',strtotime($key['date_out'])) ?>">
                           </div>
-                          <div class="col-md-2 col-xs-6">
-                            <label>Stocks</label>
-                            <input type="number" name="stock" class="form-control" value="<?= $key['stock'] ?>">
-                          </div>
-                          <div class="col-md-3 col-xs-6">
-                            <label>Type</label>
-                            <select class="form-control" name="type" required>
-                              <?php 
-                                if ($key['type'] == 1) {
-                                  echo "<option value='1' selected>Drinks</option>";
-                                  echo "<option value='2'>Food</option>";
-                                  echo "<option value='3'>Tool</option>";
-                                }elseif ($key['type'] == 2) {
-                                  echo "<option value='1'>Drinks</option>";
-                                  echo "<option value='2' selected>Food</option>";
-                                  echo "<option value='3'>Tool</option>";
-                                }else{
-                                  echo "<option value='1'>Drinks</option>";
-                                  echo "<option value='2'>Food</option>";
-                                  echo "<option value='3' selected>Tool</option>";
-                                }
-                              ?>
-                            </select>
+                          <div class="col-md-6">
+                            <label>Price</label>
+                            <input type="number" name="price" class="form-control" value="<?= $key['price'] ?>">
+                            <input type="text" name="status" value="1" hidden>
                           </div>
                         </div>
+                      </div>
+                      <div class="col-md-4">
+                        <label>Comment</label>
+                        <textarea class="form-control" name="comment" rows="4"><?= $key['comment'] ?></textarea>
                       </div>
                     </div>
                   <?php endforeach ?>
@@ -84,7 +83,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <div class="pull-right">
-                        <a href="<?php echo base_url(); ?>products" class="btn btn-default"><i class="fa fa-rotate-left"></i> Back</a>
+                        <a href="<?php echo base_url(); ?>product_in" class="btn btn-default"><i class="fa fa-rotate-left"></i> Back</a>
                         <button name="button" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
                       </div>
                     </div>

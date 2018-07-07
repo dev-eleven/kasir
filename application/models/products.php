@@ -21,9 +21,13 @@ class products extends CI_Model{
 			  ->join('suppliers','products.supplier_id = suppliers.id')
 			  ->order_by("id DESC")
 			  ->limit($limit, $start);
-
-		if ($search != '') {
-			$query->where("products.name LIKE '%$search%'");
+			  
+		if (isset($search['product']) && $search['product'] != '') {
+			$query->where("name LIKE '%".$search['product']."%'");
+		} elseif (isset($search['type']) && $search['type'] != '') {
+			$query->where("type = ".$search['type']);
+		} elseif (isset($search['supplier']) && $search['supplier'] != '') {
+			$query->where("suppliers.person_name LIKE '%".$search['supplier']."%'");
 		}
 
 		$db = $query->get();
@@ -33,7 +37,7 @@ class products extends CI_Model{
 
 	function view($id){
 		$query = $this->db;
-		$query->select(array('products.*','suppliers.person_name as supplier'))
+		$query->select(array('products.*','suppliers.person_name as supplier','suppliers.company_name as company'))
 			  ->from('products')
 			  ->join('suppliers','products.supplier_id = suppliers.id','inner')
 			  ->where('products.id ='.$id);

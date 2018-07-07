@@ -3,27 +3,33 @@
 class SupplierController extends CI_Controller{
 	function __construct(){
 		parent::__construct();
-		$this->load->helper('url_helper');
-		$this->load->model('supplier');
-		$this->load->library('pagination');
+		if ($this->session->userdata('status') != 'login') {
+			$this->session->set_flashdata('login_gagal','silakan login terlebih dahulu.');
+			redirect(base_url());
+		}
 	}
 	
 	public function index(){
 		$params = array();
 		$limit 	= 10;
 		$offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$jumlah_data = $this->supplier->jumlah_data();
-		$search = '';
+		$jumlah_data = $this->suppliers->jumlah_data();
+		$search = array();
 
 		if (isset($_POST['search'])) {
-			$search = $_POST['search'];
+			$search = [
+				"name" => $_POST['name'],
+				"company" => $_POST['company'],
+				"email" => $_POST['email'],
+				"phone" => $_POST['phone']
+			];
 		}
 		
 		if ($jumlah_data > 0) {
 			if (isset($_GET['per_page'])) {
-				$params['results'] = $this->supplier->data($limit,$_GET['per_page'] - 1,$search);
+				$params['results'] = $this->suppliers->data($limit,$_GET['per_page'] - 1,$search);
 			}else{
-				$params['results'] = $this->supplier->data($limit,$offset,$search);
+				$params['results'] = $this->suppliers->data($limit,$offset,$search);
 			}
 
 			$config['first_link']       = 'First';
@@ -56,7 +62,7 @@ class SupplierController extends CI_Controller{
 			$config['num_links'] = 2;
 			$config['page_query_string'] = TRUE;
 			$config['use_page_numbers'] = TRUE;
-			$config['base_url'] = base_url().'users';
+			$config['base_url'] = base_url().'suppliers';
 			$config['total_rows'] = $jumlah_data;
 			$config['per_page'] = $limit;
 			$config['uri_segment'] = 3;
@@ -79,21 +85,21 @@ class SupplierController extends CI_Controller{
 				"email" => $_POST['email'],
 				"phone" => $_POST['phone']
 			];
-			$this->supplier->add($params);
+			$this->suppliers->add($params);
 			redirect(base_url('suppliers'));
 		}	
 	}
 
 	public function view($id){
 		$params = array();
-		$params['product'] = $this->supplier->get_product($id);
-		$params['results'] = $this->supplier->view($id);
+		$params['product'] = $this->suppliers->get_product($id);
+		$params['results'] = $this->suppliers->view($id);
 		$this->load->view('suppliers/view',$params);
 	}
 
 	public function update($id){
 		$params = array();
-		$params['results'] = $this->supplier->view($id);
+		$params['results'] = $this->suppliers->view($id);
 		$this->load->view('suppliers/update',$params);
 		if (isset($_POST['button'])) {
 			$data = array(			
@@ -103,13 +109,13 @@ class SupplierController extends CI_Controller{
 				"email" => $_POST['email'],
 				"phone" => $_POST['phone']
 			);
-			$this->supplier->update($id,$data);
+			$this->suppliers->update($id,$data);
 			redirect(base_url('suppliers'));
 		}	
 	}
 
 	public function delete($id){
-		$this->supplier->delete($id);
+		$this->suppliers->delete($id);
 		redirect(base_url('suppliers'));
 	}
 }

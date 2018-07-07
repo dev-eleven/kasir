@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Warung Kopi || Users</title>
+	<title>Warung Kopi || Menus</title>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
@@ -22,7 +22,7 @@
           <div class="col-lg-12 col-xs-12">
             <div class="box box-primary">
               <div class="box-header with-border">
-                <h3 class="box-title">Data Users</h3>
+                <h3 class="box-title">Data Menu</h3>
                 <div class="box-tools">
                   <div class="input-group input-group-sm" style="width: 50px;">
                     <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-search"></i> Search</button>
@@ -36,8 +36,10 @@
                     <table class="table table-hover no-margin">
                       <tr>
                         <th style="width: 10px">No</th>
-                        <th>Email</th>
-                        <th>Level</th>
+                        <th>Product</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Type</th>
                         <th style="width: 120px">Action</th>
                       </tr>
                       <?php 
@@ -45,36 +47,38 @@
                         foreach ($results as $key): ?>
                         <tr>
                           <td><?php echo $no++ ?></td>
-                          <td><?php echo $key['email'] ?></td>
+                          <td><a href="<?php echo base_url('products/view/').$key['product_id'] ?>"><?php echo $key['product'] ?></a></td>
+                          <td><?php echo $key['title'] ?></td>
+                          <td><?php echo $key['price'];?></td>
                           <td>
-                            <?php 
-                              if ($key['level'] == 1) {
-                                echo "Admin";
-                              }elseif ($key['level'] == 2) {
-                                echo "Kasir";
+                            <?php
+                              if ($key['type'] == 1) {
+                                echo "Hot Drinks";
+                              }elseif ($key['type'] == 2) {
+                                echo "Cold Drinks";
                               }else{
-                                echo "Tidak Diketahui";
+                                echo "Food";
                               }
                             ?>
                           </td>
                           <td>
                             <div class="input-group-btn">
-                              <a href="<?php echo base_url('users/view/').$key['id']?>" class="btn btn-success"><i class="fa fa-eye"></i></a>
-                              <a href="<?php echo base_url('users/update/').$key['id']?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                              <a href="<?php echo base_url('usercontroller/delete/').$key['id']?>" class="btn btn-danger" onclick="return doconfirm();"><i class="fa fa-trash"></i></a>
+                              <a href="<?php echo base_url('menus/view/').$key['id']?>" class="btn btn-success"><i class="fa fa-eye"></i></a>
+                              <a href="<?php echo base_url('menus/update/').$key['id']?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                              <a href="<?php echo base_url('menucontroller/delete/').$key['id']?>" class="btn btn-danger" onclick="return doconfirm();"><i class="fa fa-trash"></i></a>
                             </div>
                           </td>
                         </tr>
                       <?php endforeach ?>
                     </table>
-                  </div>    
+                  </div>
                 </div>
               <?php } ?>
               <!-- /.box-body -->
               <?php if (isset($links)) { ?>
-                <div class="box-footer clearfix">
-                  <?php echo $links ?>
-                </div>
+              <div class="box-footer clearfix">
+                <?php echo $links ?>
+              </div>
               <?php } ?>
             </div>
           </div>
@@ -95,15 +99,24 @@
             <div class="modal-body">
               <div class="row">
                 <div class="col-md-6">
-                  <label>Email</label>
-                  <input type="text" name="email" class="form-control" placeholder="Search Email">
+                  <label>Product</label>
+                  <input type="text" name="product" class="form-control" placeholder="Search product">
                 </div>
                 <div class="col-md-6">
-                  <label>Level</label>
-                  <select class="form-control" name="level">
+                  <label>Title</label>
+                  <input type="text" name="title" class="form-control" placeholder="Search title">
+                </div>
+                <div class="col-md-6">
+                  <label>Price</label>
+                  <input type="text" name="price" class="form-control" placeholder="Search price">
+                </div>
+                <div class="col-md-6">
+                  <label>Type</label>
+                  <select class="form-control" name="type">
                     <option value="">Silakan Pilih</option>
-                    <option value="1">Admin</option>
-                    <option value="2">Kasir</option>
+                    <option value="1">Hot Drinks</option>
+                    <option value="2">Cold Drinks</option>
+                    <option value="3">Food</option>
                   </select>
                 </div>
               </div>
@@ -112,11 +125,9 @@
               <button type="submit" class="btn btn-primary" name="search">Search</button>
             </div>
           </form>
-          
         </div>
       </div>
     </div>
-
 
   </div>
 

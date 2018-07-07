@@ -1,6 +1,6 @@
 <?php
 
-class ProductController extends CI_Controller{
+class MenuController extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		if ($this->session->userdata('status') != 'login') {
@@ -13,22 +13,23 @@ class ProductController extends CI_Controller{
 		$params = array();
 		$limit 	= 10;
 		$offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$jumlah_data = $this->products->jumlah_data();
+		$jumlah_data = $this->menus->jumlah_data();
 		$search = array();
 
 		if (isset($_POST['search'])) {
 			$search = [
-				"supplier" => $_POST['supplier'],
+				"title" => $_POST['title'],
 				"product" => $_POST['product'],
+				"price" => $_POST['price'],
 				"type" => $_POST['type']
 			];
 		}
 		
 		if ($jumlah_data > 0) {
 			if (isset($_GET['per_page'])) {
-				$params['results'] = $this->products->data($limit,$_GET['per_page'] - 1,$search);
+				$params['results'] = $this->menus->data($limit,$_GET['per_page'] - 1,$search);
 			}else{
-				$params['results'] = $this->products->data($limit,$offset,$search);
+				$params['results'] = $this->menus->data($limit,$offset,$search);
 			}
 
 			$config['first_link']       = 'First';
@@ -61,7 +62,7 @@ class ProductController extends CI_Controller{
 			$config['num_links'] = 2;
 			$config['page_query_string'] = TRUE;
 			$config['use_page_numbers'] = TRUE;
-			$config['base_url'] = base_url().'products';
+			$config['base_url'] = base_url().'menus';
 			$config['total_rows'] = $jumlah_data;
 			$config['per_page'] = $limit;
 			$config['uri_segment'] = 3;
@@ -70,50 +71,50 @@ class ProductController extends CI_Controller{
 			$params["links"] = $this->pagination->create_links();
 		}
 		
-		$this->load->view('products/index', $params);		
+		$this->load->view('menus/index', $params);		
 	}
 
 	public function add(){
 		$params = array();
-		$params['results'] = $this->products->get_supplier();
-		$this->load->view('products/add',$params);
+		$params['results'] = $this->menus->get_product();
+		$this->load->view('menus/add',$params);
 		if (isset($_POST['button'])) {
 			$params = [
-				"supplier_id" => $_POST['supplier_id'],
-				"name" => $_POST['product'],
-				"stock" => $_POST['stock'],
+				"product_id" => $_POST['product_id'],
+				"title" => $_POST['title'],
+				"price" => $_POST['price'],
 				"type" => $_POST['type']
 			];
-			$this->products->add($params);
-			redirect(base_url('products'));
+			$this->menus->add($params);
+			redirect(base_url('menus'));
 		}	
 	}
 
 	public function view($id){
 		$params = array();
-		$params['results'] = $this->products->view($id);
-		$this->load->view('products/view',$params);
+		$params['results'] = $this->menus->view($id);
+		$this->load->view('menus/view',$params);
 	}
 
 	public function update($id){
 		$params = array();
-		$params['results'] = $this->products->view($id);
-		$params['supplier'] = $this->products->get_supplier();
-		$this->load->view('products/update',$params);
+		$params['results'] = $this->menus->view($id);
+		$params['supplier'] = $this->menus->get_product();
+		$this->load->view('menus/update',$params);
 		if (isset($_POST['button'])) {
 			$data = array(			
-				"supplier_id" => $_POST['supplier_id'],
-				"name" => $_POST['product'],
-				"stock" => $_POST['stock'],
+				"product_id" => $_POST['product_id'],
+				"title" => $_POST['title'],
+				"price" => $_POST['price'],
 				"type" => $_POST['type']
 			);
-			$this->products->update($id,$data);
-			redirect(base_url('products'));
+			$this->menus->update($id,$data);
+			redirect(base_url('menus'));
 		}	
 	}
 
 	public function delete($id){
-		$this->products->delete($id);
-		redirect(base_url('products'));
+		$this->menus->delete($id);
+		redirect(base_url('menus'));
 	}
 }

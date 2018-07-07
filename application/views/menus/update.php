@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Warung Kopi || Products</title>
+	<title>Warung Kopi || Menus</title>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
@@ -32,13 +32,13 @@
                     <div class="row">
                       <div class="col-md-4">
                           <label>Supplier</label>
-                          <select class="form-control select2" style="width: 100%" name="supplier_id">
+                          <select class="form-control select2" style="width: 100%" name="product_id">
                             <?php foreach ($supplier as $keys): 
-                              if ($key['supplier_id'] == $keys['id']) { 
+                              if ($key['product_id'] == $keys['id']) { 
                             ?>
-                              <option selected value="<?= $keys['id'] ?>"><?= $keys['person_name'] ?></option>
+                              <option selected value="<?= $keys['id'] ?>"><?= $keys['name'] ?></option>
                             <?php }else{ ?>
-                              <option value="<?= $keys['id'] ?>"><?= $keys['person_name'] ?></option>
+                              <option value="<?= $keys['id'] ?>"><?= $keys['name'] ?></option>
                             <?php  
                               }
                             ?>
@@ -47,30 +47,30 @@
                       </div>
                       <div class="col-md-8">
                         <div class="row">
-                          <div class="col-md-7">
-                            <label>Product</label>
-                              <input type="text" name="product" class="form-control" value="<?= $key['name'] ?>">
+                          <div class="col-md-6">
+                            <label>Title</label>
+                              <input type="text" name="title" class="form-control" value="<?= $key['title'] ?>">
                           </div>
-                          <div class="col-md-2 col-xs-6">
-                            <label>Stocks</label>
-                            <input type="number" name="stock" class="form-control" value="<?= $key['stock'] ?>">
+                          <div class="col-md-3 col-xs-6">
+                            <label>Price</label>
+                            <input type="number" name="price" class="form-control" value="<?= $key['price'] ?>">
                           </div>
                           <div class="col-md-3 col-xs-6">
                             <label>Type</label>
                             <select class="form-control" name="type" required>
                               <?php 
                                 if ($key['type'] == 1) {
-                                  echo "<option value='1' selected>Drinks</option>";
-                                  echo "<option value='2'>Food</option>";
-                                  echo "<option value='3'>Tool</option>";
+                                  echo "<option value='1' selected>Hot Drinks</option>";
+                                  echo "<option value='2'>Cold Drinks</option>";
+                                  echo "<option value='3'>Food</option>";
                                 }elseif ($key['type'] == 2) {
-                                  echo "<option value='1'>Drinks</option>";
-                                  echo "<option value='2' selected>Food</option>";
-                                  echo "<option value='3'>Tool</option>";
+                                  echo "<option value='1'>Hot Drinks</option>";
+                                  echo "<option value='2' selected>Cold Drinks</option>";
+                                  echo "<option value='3'>Food</option>";
                                 }else{
-                                  echo "<option value='1'>Drinks</option>";
-                                  echo "<option value='2'>Food</option>";
-                                  echo "<option value='3' selected>Tool</option>";
+                                  echo "<option value='1'>Hot Drinks</option>";
+                                  echo "<option value='2'>Cold Drinks</option>";
+                                  echo "<option value='3' selected>Food</option>";
                                 }
                               ?>
                             </select>
@@ -84,7 +84,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <div class="pull-right">
-                        <a href="<?php echo base_url(); ?>products" class="btn btn-default"><i class="fa fa-rotate-left"></i> Back</a>
+                        <a href="<?php echo base_url(); ?>menus" class="btn btn-default"><i class="fa fa-rotate-left"></i> Back</a>
                         <button name="button" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
                       </div>
                     </div>

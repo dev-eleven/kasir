@@ -10,7 +10,7 @@
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
         <li>
-          <a href="<?php echo base_url(); ?>inventaris"><i class="fa fa-refresh"></i> Switch to inventaris</a>
+          <a href="<?php echo base_url(); ?>dashboard"><i class="fa fa-refresh"></i> Switch to inventories</a>
         </li>
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">

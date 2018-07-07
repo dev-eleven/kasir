@@ -22,65 +22,64 @@
           <div class="col-lg-12 col-xs-12">
             <div class="box box-primary">
               <div class="box-header with-border">
-                <h3 class="box-title">Data Product | <a href="<?php echo base_url() ?>products/add">Tambah Data</a></h3>
+                <h3 class="box-title">Data Product</h3>
                 <div class="box-tools">
-                  <form method="post">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                      <input type="text" name="search" class="form-control pull-right" placeholder="Search">
-                      <div class="input-group-btn">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                      </div>
-                    </div>
-                  </form>   
+                  <div class="input-group input-group-sm" style="width: 50px;">
+                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-search"></i> Search</button>
+                  </div>
                 </div>
               </div>
               <!-- /.box-header -->
               <?php if (isset($results)) { ?>
-              <div class="box-body">
-                <table class="table table-hover">
-                  <tr>
-                    <th style="width: 10px">No</th>
-                    <th>Supplier</th>
-                    <th>Product</th>
-                    <th>Type</th>
-                    <th style="width: 120px">Action</th>
-                  </tr>
-                  <?php 
-                    $no = 1;
-                    foreach ($results as $key): ?>
-                    <tr>
-                      <td><?php echo $no++ ?></td>
-                      <td><a href="<?php echo base_url('suppliers/view/').$key['supplier_id'] ?>"><?php echo $key['supplier'] ?></a></td>
-                      <td><?php echo $key['name'] ?></td>
-                      <td>
-                        <?php
-                          if ($key['type'] == 1) {
-                            echo "Hot Drinks";
-                          }elseif ($key['type'] == 2) {
-                            echo "Cold Drinks";
-                          }elseif ($key['type'] == 3) {
-                            echo "Food";
-                          }
-                        ?>
-                      </td>
-                      <td>
-                        <div class="input-group-btn">
-                          <a href="<?php echo base_url('products/view/').$key['id']?>" class="btn btn-success"><i class="fa fa-eye"></i></a>
-                          <a href="<?php echo base_url('products/update/').$key['id']?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                          <a href="<?php echo base_url('productcontroller/delete/').$key['id']?>" class="btn btn-danger" onclick="return doconfirm();"><i class="fa fa-trash"></i></a>
-                        </div>
-                      </td>
-                    </tr>
-                  <?php endforeach ?>
-                </table>
-              </div>
+                <div class="box-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover no-margin">
+                      <tr>
+                        <th style="width: 10px">No</th>
+                        <th>Supplier</th>
+                        <th>Product</th>
+                        <th>Stock</th>
+                        <th>Type</th>
+                        <th style="width: 120px">Action</th>
+                      </tr>
+                      <?php 
+                        $no = 1;
+                        foreach ($results as $key): ?>
+                        <tr>
+                          <td><?php echo $no++ ?></td>
+                          <td><a href="<?php echo base_url('suppliers/view/').$key['supplier_id'] ?>"><?php echo $key['supplier'] ?></a></td>
+                          <td><?php echo $key['name'] ?></td>
+                          <td><?php echo $key['stock'];?></td>
+                          <td>
+                            <?php
+                              if ($key['type'] == 1) {
+                                echo "Drinks";
+                              }elseif ($key['type'] == 2) {
+                                echo "Food";
+                              }else{
+                                echo "Tool";
+                              }
+                            ?>
+                          </td>
+                          <td>
+                            <div class="input-group-btn">
+                              <a href="<?php echo base_url('products/view/').$key['id']?>" class="btn btn-success"><i class="fa fa-eye"></i></a>
+                              <a href="<?php echo base_url('products/update/').$key['id']?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                              <a href="<?php echo base_url('productcontroller/delete/').$key['id']?>" class="btn btn-danger" onclick="return doconfirm();"><i class="fa fa-trash"></i></a>
+                            </div>
+                          </td>
+                        </tr>
+                      <?php endforeach ?>
+                    </table>
+                  </div>
+                </div>
               <?php } ?>
               <!-- /.box-body -->
+              <?php if (isset($links)) { ?>
               <div class="box-footer clearfix">
-                <?php if (isset($links)) { ?>
-                    <?php echo $links ?>
-                <?php } ?>
+                <?php echo $links ?>
               </div>
+              <?php } ?>
             </div>
           </div>
         </div>
@@ -88,6 +87,44 @@
     </div>
 
     <?php $this->load->view('template/footer'); ?>
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Search Data</h4>
+          </div>
+          <form method="post">
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <label>Supplier</label>
+                  <input type="text" name="supplier" class="form-control" placeholder="Search supplier">
+                </div>
+                <div class="col-md-6">
+                  <label>Product</label>
+                  <input type="text" name="product" class="form-control" placeholder="Search product">
+                </div>
+                <div class="col-md-6">
+                  <label>Type</label>
+                  <select class="form-control" name="type">
+                    <option value="">Silakan Pilih</option>
+                    <option value="1">Drinks</option>
+                    <option value="2">Food</option>
+                    <option value="3">Tool</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" name="search">Search</button>
+            </div>
+          </form>
+          
+        </div>
+      </div>
+    </div>
 
   </div>
 

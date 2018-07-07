@@ -3,13 +3,14 @@
 <head>
 	<meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Warung Kopi || Users</title>
+	<title>Warung Kopi || Inventories</title>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/ionicons.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/AdminLTE.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/_all-skins.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap-datepicker.min.css">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
@@ -22,7 +23,7 @@
           <div class="col-lg-12 col-xs-12">
             <div class="box box-primary">
               <div class="box-header with-border">
-                <h3 class="box-title">Data Users</h3>
+                <h3 class="box-title">Data Product In</h3>
                 <div class="box-tools">
                   <div class="input-group input-group-sm" style="width: 50px;">
                     <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-search"></i> Search</button>
@@ -36,8 +37,10 @@
                     <table class="table table-hover no-margin">
                       <tr>
                         <th style="width: 10px">No</th>
-                        <th>Email</th>
-                        <th>Level</th>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Date In</th>
                         <th style="width: 120px">Action</th>
                       </tr>
                       <?php 
@@ -45,23 +48,14 @@
                         foreach ($results as $key): ?>
                         <tr>
                           <td><?php echo $no++ ?></td>
-                          <td><?php echo $key['email'] ?></td>
-                          <td>
-                            <?php 
-                              if ($key['level'] == 1) {
-                                echo "Admin";
-                              }elseif ($key['level'] == 2) {
-                                echo "Kasir";
-                              }else{
-                                echo "Tidak Diketahui";
-                              }
-                            ?>
-                          </td>
+                          <td><a href="<?php echo base_url('products/view/').$key['product_id'] ?>"><?= $key['product'] ?></a></td>
+                          <td><?php echo $key['quantity']; echo " ".$key['unit_type']; ?></td>
+                          <td><?php echo "Rp.".number_format($key['price']) ?></td>
+                          <td><?php echo date("D, d M Y",strtotime($key['date_in'])) ?></td>
                           <td>
                             <div class="input-group-btn">
-                              <a href="<?php echo base_url('users/view/').$key['id']?>" class="btn btn-success"><i class="fa fa-eye"></i></a>
-                              <a href="<?php echo base_url('users/update/').$key['id']?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                              <a href="<?php echo base_url('usercontroller/delete/').$key['id']?>" class="btn btn-danger" onclick="return doconfirm();"><i class="fa fa-trash"></i></a>
+                              <a href="<?php echo base_url('product_in/update/').$key['id']?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                              <a href="<?php echo base_url('inventoriecontroller/delete_product_in/').$key['id']?>" class="btn btn-danger" onclick="return doconfirm();"><i class="fa fa-trash"></i></a>
                             </div>
                           </td>
                         </tr>
@@ -95,16 +89,20 @@
             <div class="modal-body">
               <div class="row">
                 <div class="col-md-6">
-                  <label>Email</label>
-                  <input type="text" name="email" class="form-control" placeholder="Search Email">
+                  <label>Product</label>
+                  <input type="text" name="product" class="form-control" placeholder="Search product">
                 </div>
                 <div class="col-md-6">
-                  <label>Level</label>
-                  <select class="form-control" name="level">
-                    <option value="">Silakan Pilih</option>
-                    <option value="1">Admin</option>
-                    <option value="2">Kasir</option>
-                  </select>
+                  <label>Quantity</label>
+                  <input type="number" name="quantity" class="form-control" placeholder="Search quantity">
+                </div>
+                <div class="col-md-6">
+                  <label>Price</label>
+                  <input type="number" name="price" class="form-control" placeholder="Search price">
+                </div>
+                <div class="col-md-6">
+                  <label>Date In</label>
+                  <input type="text" name="date_in" class="form-control" placeholder="Search date_in" id="datepicker">
                 </div>
               </div>
             </div>
@@ -112,7 +110,6 @@
               <button type="submit" class="btn btn-primary" name="search">Search</button>
             </div>
           </form>
-          
         </div>
       </div>
     </div>
@@ -126,6 +123,7 @@
   <script src="<?php echo base_url();?>assets/js/adminlte.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/jquery.slimscroll.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/demo.js"></script>
+  <script src="<?php echo base_url();?>assets/js/bootstrap-datepicker.min.js"></script>
   <script>
       function doconfirm()
       {
@@ -137,6 +135,12 @@
               return false;
           }
       }
+      $(function () {
+          //Date picker
+          $('#datepicker').datepicker({
+            autoclose: true
+          })
+      })
   </script>
  
 </body>

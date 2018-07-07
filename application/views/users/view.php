@@ -25,30 +25,32 @@
                 View Data
               </div>
               <div class="panel-body">
-                <table class="table">
+                <div class="row">
                   <?php foreach ($results as $key): ?>
-                    <tr>
-                      <td>Email</td>
-                      <td><input type="Email" placeholder="email" class="form-control" disabled value="<?= $key['email'] ?>"></td>
-                    </tr>
-                    <tr>
-                      <td>Level</td>
-                      <td>
-                        <select class="form-control" disabled>
-                          <?php 
-                            if ($key['level'] == 1) {
-                              echo "<option>Admin</option>";
-                            }elseif ($key['level'] == 2) {
-                              echo "<option>Kasir</option>";
-                            }else{
-                              echo "<option>Tidak Diketahui</option>";
-                            }
-                          ?>
-                        </select>
-                      </td>
-                    </tr>
+                    <div class="col-md-4">
+                      <label>Email</label>
+                      <input type="Email" placeholder="email" class="form-control" disabled value="<?= $key['email'] ?>">
+                    </div>
+                    <div class="col-md-4">
+                      <label>Level</label>
+                      <select class="form-control" disabled>
+                        <?php 
+                          if ($key['level'] == 1) {
+                            echo "<option>Admin</option>";
+                          }elseif ($key['level'] == 2) {
+                            echo "<option>Kasir</option>";
+                          }else{
+                            echo "<option>Tidak Diketahui</option>";
+                          }
+                        ?>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <label>Password</label>
+                      <input type="text" class="form-control" disabled>
+                    </div>
                   <?php endforeach ?>
-                </table>
+                </div>
               </div>
               <div class="panel-footer">
                 <div class="row">

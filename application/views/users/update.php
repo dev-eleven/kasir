@@ -26,44 +26,39 @@
               </div>
               <form method="post">
                 <div class="panel-body">
-                  <table class="table">
-                    <?php foreach ($results as $key): ?>
-                      <tr>
-                        <td>Email</td>
-                        <td><input type="Email" name="email" placeholder="email" class="form-control" required value="<?= $key['email'] ?>"></td>
-                      </tr>
-                      <tr>
-                        <td>Level</td>
-                        <td>
-                          <select class="form-control" name="level">
-                            <?php 
-                              if ($key['level'] == 1) {
-                                echo "<option value='1' selected>Admin</option>";
-                                echo "<option value='2'>Kasir</option>";
-                                echo "<option value='3'>Tidak Diketahui</option>";
-                              }elseif ($key['level'] == 2) {
-                                echo "<option value='1'>Admin</option>";
-                                echo "<option value='2' selected>Kasir</option>";
-                                echo "<option value='3'>Tidak Diketahui</option>";
-                              }else{
-                                echo "<option value='1'>Admin</option>";
-                                echo "<option value='2'>Kasir</option>";
-                                echo "<option value='3' selected>Tidak Diketahui</option>";
-                              }
-                            ?>
-                          </select>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Password</td>
-                        <td>
-                          <input type="text" name="password" placeholder="Kosongkan Jika Tidak Dirubah" class="form-control">
-                          <input type="text" name="password_hidden" value="<?= $key['password'] ?>" hidden>
-                        </td>
-                      </tr>
-
+                  <div class="row">
+                      <?php foreach ($results as $key): ?>
+                      <div class="col-md-4">
+                        <label>Email</label>
+                        <input type="Email" name="email" placeholder="email" class="form-control" required value="<?= $key['email'] ?>">
+                      </div>
+                      <div class="col-md-4">
+                        <label>Level</label>
+                        <select class="form-control" name="level">
+                          <?php 
+                            if ($key['level'] == 1) {
+                              echo "<option value='1' selected>Admin</option>";
+                              echo "<option value='2'>Kasir</option>";
+                              echo "<option value='3'>Tidak Diketahui</option>";
+                            }elseif ($key['level'] == 2) {
+                              echo "<option value='1'>Admin</option>";
+                              echo "<option value='2' selected>Kasir</option>";
+                              echo "<option value='3'>Tidak Diketahui</option>";
+                            }else{
+                              echo "<option value='1'>Admin</option>";
+                              echo "<option value='2'>Kasir</option>";
+                              echo "<option value='3' selected>Tidak Diketahui</option>";
+                            }
+                          ?>
+                        </select>
+                      </div>
+                      <div class="col-md-4">
+                        <label>Password</label>
+                        <input type="text" name="password" placeholder="Kosongkan Jika Tidak Dirubah" class="form-control">
+                        <input type="text" name="password_hidden" value="<?= $key['password'] ?>" hidden>
+                      </div>
                     <?php endforeach ?>
-                  </table>
+                  </div>
                 </div>
                 <div class="panel-footer">
                   <div class="row">

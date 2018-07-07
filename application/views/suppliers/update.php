@@ -26,32 +26,26 @@
               </div>
               <form method="post">
                 <div class="panel-body">
-                  <table class="table">
-                    <?php foreach ($results as $key): ?>
-                     <tr>
-                       <td>Person Name</td>
-                       <td><input type="text" name="person_name" class="form-control" value="<?= $key['person_name'] ?>"></td>
-                     </tr>
-                     <tr>
-                       <td>Company Name</td>
-                       <td><input type="text" name="company_name" class="form-control" value="<?= $key['company_name'] ?>"></td>
-                     </tr>
-                     <tr>
-                       <td>Address</td>
-                       <td>
-                         <textarea name="address" class="form-control" rows="5"><?= $key['address'] ?></textarea>
-                       </td>
-                     </tr>
-                     <tr>
-                       <td>Email</td>
-                       <td><input type="Email" name="email" class="form-control" value="<?= $key['email'] ?>"></td>
-                     </tr>
-                     <tr>
-                       <td>Phone</td>
-                       <td><input type="number" name="phone" class="form-control" value="<?= $key['phone'] ?>"></td>
-                     </tr>
-                    <?php endforeach ?>
-                  </table>
+                  <?php foreach ($results as $key): ?>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <label>Person Name</label>
+                        <input type="text" name="person_name" class="form-control" value="<?= $key['person_name'] ?>" required>
+                        <label>Company Name</label>
+                        <input type="text" name="company_name" class="form-control" value="<?= $key['company_name'] ?>" required>
+                      </div>
+                      <div class="col-md-4">
+                        <label>Email</label>
+                        <input type="Email" name="email" class="form-control" value="<?= $key['email'] ?>" required>
+                        <label>Phone</label>
+                        <input type="number" name="phone" class="form-control" value="<?= $key['phone'] ?>" required>
+                      </div>
+                      <div class="col-md-4">
+                        <label>Address</label>
+                        <textarea name="address" class="form-control" rows="4" required><?= $key['address'] ?></textarea>
+                      </div>
+                    </div>
+                  <?php endforeach ?>
                 </div>
                 <div class="panel-footer">
                   <div class="row">

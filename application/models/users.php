@@ -25,8 +25,10 @@ class users extends CI_Model{
 			  ->order_by("id DESC")
 			  ->limit($limit, $start);
 
-		if ($search != '') {
-			$query->where("email LIKE '%$search%'");
+		if (isset($search['email']) && $search['email'] != '') {
+			$query->where("email LIKE '%".$search['email']."%'");
+		}elseif (isset($search['level']) && $search['level'] != '') {
+			$query->where("level = ".$search['level']);
 		}
 
 		$db = $query->get();
