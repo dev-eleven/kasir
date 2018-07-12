@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Warung Kopi || Users</title>
+	<title>Warung Kopi || Customers</title>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
@@ -14,7 +14,7 @@
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
 
-    <?php $this->load->view('template/header'); ?>
+    <?php $this->load->view('template/header2'); ?>
 
     <div class="content-wrapper">
       <section class="content">
@@ -22,10 +22,10 @@
           <div class="col-lg-12 col-xs-12">
             <div class="box box-primary">
               <div class="box-header with-border">
-                <h3 class="box-title">Data Users</h3>
+                <h3 class="box-title">Data Customer</h3>
                 <div class="box-tools">
                   <div class="input-group input-group-sm" style="width: 50px;">
-                    <button type="submit" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-search"></i>&nbsp; Search</button>
+                    <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-search"></i> Search</button>
                   </div>
                 </div>
               </div>
@@ -35,46 +35,37 @@
                   <div class="table-responsive">
                     <table class="table table-hover no-margin">
                       <thead style="background-color: #7d490b;color: #ffffff">
-                        <th style="width: 10px">No</th>
-                        <th>Email</th>
-                        <th>Level</th>
-                        <th style="width: 120px">Action</th>
+                        <tr>
+                          <th style="width: 10px">No</th>
+                          <th>Name</th>
+                          <th>Address</th>
+                          <th style="width: 120px">Action</th>
+                        </tr>
                       </thead>
                       <?php 
                         $no = 1;
                         foreach ($results as $key): ?>
-                        <tr style="">
+                        <tr>
                           <td><?php echo $no++ ?></td>
-                          <td><?php echo $key['email'] ?></td>
-                          <td>
-                            <?php 
-                              if ($key['level'] == 1) {
-                                echo "Admin";
-                              }elseif ($key['level'] == 2) {
-                                echo "Kasir";
-                              }else{
-                                echo "Tidak Diketahui";
-                              }
-                            ?>
-                          </td>
+                          <td><?= $key['name'] ?></td>
+                          <td><?= $key['address'] ?></td>
                           <td>
                             <div class="input-group-btn">
-                              <a href="<?php echo base_url('users/view/').$key['id']?>" class="btn btn-success"><i class="fa fa-eye"></i></a>
-                              <a href="<?php echo base_url('users/update/').$key['id']?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                              <a href="<?php echo base_url('usercontroller/delete/').$key['id']?>" class="btn btn-danger" onclick="return doconfirm();"><i class="fa fa-trash"></i></a>
+                              <a href="<?php echo base_url('customers/update/').$key['id']?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                              <a href="<?php echo base_url('customercontroller/delete/').$key['id']?>" class="btn btn-danger" onclick="return doconfirm();"><i class="fa fa-trash"></i></a>
                             </div>
                           </td>
                         </tr>
                       <?php endforeach ?>
                     </table>
-                  </div>    
+                  </div>
                 </div>
               <?php } ?>
               <!-- /.box-body -->
               <?php if (isset($links)) { ?>
-                <div class="box-footer clearfix">
-                  <?php echo $links ?>
-                </div>
+              <div class="box-footer clearfix">
+                <?php echo $links ?>
+              </div>
               <?php } ?>
             </div>
           </div>
@@ -95,16 +86,12 @@
             <div class="modal-body">
               <div class="row">
                 <div class="col-md-6">
-                  <label>Email</label>
-                  <input type="text" name="email" class="form-control" placeholder="Search Email">
+                  <label>Name</label>
+                  <input type="text" name="name" class="form-control" placeholder="Search name">
                 </div>
                 <div class="col-md-6">
-                  <label>Level</label>
-                  <select class="form-control" name="level">
-                    <option value="">Silakan Pilih</option>
-                    <option value="1">Admin</option>
-                    <option value="2">Kasir</option>
-                  </select>
+                  <label>Address</label>
+                  <input type="text" name="address" class="form-control" placeholder="Search address">
                 </div>
               </div>
             </div>
@@ -112,11 +99,9 @@
               <button type="submit" class="btn btn-primary" name="search">Search</button>
             </div>
           </form>
-          
         </div>
       </div>
     </div>
-
 
   </div>
 

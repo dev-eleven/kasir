@@ -59,6 +59,10 @@ class products extends CI_Model{
     	$this->db->where('id',$id);
 		$this->db->update('products',$data);
     }
+    function update_false($id,$data){
+    	$this->db->where('id',$id);
+		$this->db->update('products',$data);
+    }
 
 	function delete($id){
         $this->db->where('id',$id);

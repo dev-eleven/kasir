@@ -35,14 +35,15 @@
                 <div class="box-body">
                   <div class="table-responsive">
                     <table class="table table-hover no-margin">
-                      <tr>
+                      <thead style="background-color: #7d490b;color: #ffffff">
                         <th style="width: 10px">No</th>
                         <th>Product</th>
                         <th>Quantity</th>
                         <th>Price</th>
+                        <th>Total</th>
                         <th>Date In</th>
                         <th style="width: 120px">Action</th>
-                      </tr>
+                      </thead>
                       <?php 
                         $no = 1;
                         foreach ($results as $key): ?>
@@ -51,11 +52,12 @@
                           <td><a href="<?php echo base_url('products/view/').$key['product_id'] ?>"><?= $key['product'] ?></a></td>
                           <td><?php echo $key['quantity']; echo " ".$key['unit_type']; ?></td>
                           <td><?php echo "Rp.".number_format($key['price']) ?></td>
+                          <td><?php echo "Rp.".number_format($key['quantity']*$key['price']); ?></td>
                           <td><?php echo date("D, d M Y",strtotime($key['date_in'])) ?></td>
                           <td>
                             <div class="input-group-btn">
                               <a href="<?php echo base_url('product_in/update/').$key['id']?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                              <a href="<?php echo base_url('inventoriecontroller/delete_product_in/').$key['id']?>" class="btn btn-danger" onclick="return doconfirm();"><i class="fa fa-trash"></i></a>
+                              <a href="<?php echo base_url('inventoriecontroller/product_in_delete/').$key['id']?>" class="btn btn-danger" onclick="return doconfirm();"><i class="fa fa-trash"></i></a>
                             </div>
                           </td>
                         </tr>

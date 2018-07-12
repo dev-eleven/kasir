@@ -51,10 +51,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 //Kasir
-$route['kasir'] = 'kasircontroller/index';
+$route['cashier'] = 'cashiercontroller/index';
 
 //Dashboard
 $route['dashboard'] = 'indexcontroller/index';
+
+//Customers
+$route['customers'] = 'customercontroller/index';
+$route['customers/add'] = 'customercontroller/add';
+$route['customers/update/(:any)'] = 'customercontroller/update/$1';
 
 //Users
 $route['users'] = 'usercontroller/index';
@@ -90,6 +95,28 @@ $route['product_out'] = 'inventoriecontroller/product_out';
 $route['product_out/add'] = 'inventoriecontroller/product_out_add';
 $route['product_out/update/(:any)'] = 'inventoriecontroller/product_out_update/$1';
 
+//inventories borrowed
+$route['product_borrowed'] = 'inventoriecontroller/product_borrowed';
+$route['product_borrowed/add'] = 'inventoriecontroller/product_borrowed_add';
+$route['product_borrowed/update/(:any)'] = 'inventoriecontroller/product_borrowed_update/$1';
+
+//inventories returned
+$route['product_returned'] = 'inventoriecontroller/product_returned';
+$route['product_returned/add'] = 'inventoriecontroller/product_returned_add';
+$route['product_returned/update/(:any)'] = 'inventoriecontroller/product_returned_update/$1';
+
+//inventories broken
+$route['product_broken'] = 'inventoriecontroller/product_broken';
+$route['product_broken/add'] = 'inventoriecontroller/product_broken_add';
+$route['product_broken/update/(:any)'] = 'inventoriecontroller/product_broken_update/$1';
+
+//inventories broken
+$route['product_lost'] = 'inventoriecontroller/product_lost';
+$route['product_lost/add'] = 'inventoriecontroller/product_lost_add';
+$route['product_lost/update/(:any)'] = 'inventoriecontroller/product_lost_update/$1';
+
+//reports
+$route['inventories/reports'] = 'inventoriecontroller/report';
 
 //Default
 $route['default_controller'] = 'sessioncontroller/login';

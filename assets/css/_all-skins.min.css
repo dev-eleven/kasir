@@ -1,5 +1,5 @@
 .skin-blue .main-header .navbar {
-    background-color: #3c8dbc
+    background-color: #7d490b
 }
 .skin-blue .main-header .navbar .nav>li>a {
     color: #fff
@@ -19,7 +19,7 @@
     color: #fff
 }
 .skin-blue .main-header .navbar .sidebar-toggle:hover {
-    background-color: #367fa9
+    background-color: #b1752e
 }
 @media (max-width:767px) {
     .skin-blue .main-header .navbar .dropdown-menu li.divider {
@@ -33,15 +33,15 @@
     }
 }
 .skin-blue .main-header .logo {
-    background-color: #367fa9;
+    background-color: #7d490b;
     color: #fff;
     border-bottom: 0 solid transparent
 }
 .skin-blue .main-header .logo:hover {
-    background-color: #357ca5
+    background-color: #b1752e
 }
 .skin-blue .main-header li.user-header {
-    background-color: #3c8dbc
+    background-color: #7d490b
 }
 .skin-blue .content-header {
     background: transparent
@@ -64,7 +64,7 @@
     background: #1e282c
 }
 .skin-blue .sidebar-menu>li.active>a {
-    border-left-color: #3c8dbc
+    border-left-color: #7d490b
 }
 .skin-blue .sidebar-menu>li>.treeview-menu {
     margin: 0 1px;
@@ -115,7 +115,7 @@
     border-bottom-left-radius: 0
 }
 .skin-blue.layout-top-nav .main-header>.logo {
-    background-color: #3c8dbc;
+    background-color: #7d490b;
     color: #fff;
     border-bottom: 0 solid transparent
 }
@@ -123,7 +123,7 @@
     background-color: #3b8ab8
 }
 .skin-blue-light .main-header .navbar {
-    background-color: #3c8dbc
+    background-color: #7d490b
 }
 .skin-blue-light .main-header .navbar .nav>li>a {
     color: #fff
@@ -157,7 +157,7 @@
     }
 }
 .skin-blue-light .main-header .logo {
-    background-color: #3c8dbc;
+    background-color: #7d490b;
     color: #fff;
     border-bottom: 0 solid transparent
 }
@@ -165,7 +165,7 @@
     background-color: #3b8ab8
 }
 .skin-blue-light .main-header li.user-header {
-    background-color: #3c8dbc
+    background-color: #7d490b
 }
 .skin-blue-light .content-header {
     background: transparent
@@ -197,7 +197,7 @@
     background: #f4f4f5
 }
 .skin-blue-light .sidebar-menu>li.active {
-    border-left-color: #3c8dbc
+    border-left-color: #7d490b
 }
 .skin-blue-light .sidebar-menu>li.active>a {
     font-weight: 600
@@ -261,7 +261,7 @@
     border-top-color: #d2d6de
 }
 .skin-blue.layout-top-nav .main-header>.logo {
-    background-color: #3c8dbc;
+    background-color: #7d490b;
     color: #fff;
     border-bottom: 0 solid transparent
 }

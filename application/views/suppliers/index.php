@@ -34,14 +34,14 @@
                 <div class="box-body">
                   <div class="table-responsive">
                     <table class="table table-hover no-margin">
-                      <tr>
+                      <thead style="background-color: #7d490b;color: #ffffff">
                         <th style="width: 10px">No</th>
                         <th>Name</th>
                         <th>Company</th>
                         <th>Email</th>
                         <th>Phone</th>
                         <th style="width: 120px">Action</th>
-                      </tr>
+                      </thead>
                       <?php 
                         $no = 1;
                         foreach ($results as $key): ?>

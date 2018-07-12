@@ -1,6 +1,6 @@
 <?php
 
-class KasirController extends CI_Controller{
+class CashierController extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		if ($this->session->userdata('status') != 'login') {
@@ -10,6 +10,6 @@ class KasirController extends CI_Controller{
 	}
 
 	public function index(){
-		$this->load->view('kasir/index');
+		$this->load->view('cashier/index');
 	}
 }

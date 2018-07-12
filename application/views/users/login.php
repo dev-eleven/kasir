@@ -24,11 +24,11 @@
           <?php echo "<p class='alert alert-danger' style='color:red;'>".$this->session->flashdata('login_gagal')."</p>"; ?>
         <?php endif; ?>
         <div class="form-group has-feedback">
-          <input type="email" class="form-control" placeholder="Email" name="email">
+          <input type="email" class="form-control" placeholder="Email" name="email" required>
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
         <div class="form-group has-feedback">
-          <input type="password" class="form-control" placeholder="Password" name="password">
+          <input type="password" class="form-control" placeholder="Password" name="password" required>
           <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
         <button type="submit" class="btn btn-primary btn-block btn-flat" name="button">Sign In</button>

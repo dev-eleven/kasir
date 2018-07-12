@@ -68,13 +68,13 @@
                       <div class="col-md-4">
                         <div class="row">
                           <div class="col-md-12">
-                            <label>Date Out</label>
-                            <input type="text" name="date_out" id="datepicker" class="form-control" value="<?php echo date('m/d/Y',strtotime($key['date_out'])) ?>">
+                            <label>Date lost</label>
+                            <input type="text" name="date_lost" id="datepicker" class="form-control" value="<?php echo date('m/d/Y',strtotime($key['date_lost'])) ?>">
                           </div>
                           <div class="col-md-6">
                             <label>Price</label>
                             <input type="number" name="price" class="form-control" value="<?= $key['price'] ?>">
-                            <input type="text" name="status" value="2" hidden>
+                            <input type="text" name="status" value="6" hidden>
                           </div>
                         </div>
                       </div>
@@ -89,7 +89,7 @@
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <div class="pull-right">
-                        <a href="<?php echo base_url(); ?>product_out" class="btn btn-default"><i class="fa fa-rotate-left"></i> Back</a>
+                        <a href="<?php echo base_url(); ?>product_in" class="btn btn-default"><i class="fa fa-rotate-left"></i> Back</a>
                         <button name="button" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
                       </div>
                     </div>

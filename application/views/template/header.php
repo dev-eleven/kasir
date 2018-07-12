@@ -10,16 +10,16 @@
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
         <li>
-          <a href="<?php echo base_url(); ?>kasir"><i class="fa fa-refresh"></i> Switch to kasir</a>
+          <a href="<?php echo base_url(); ?>cashier"><i class="fa fa-refresh"></i> &nbsp;Switch to Cashier</a>
         </li>
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="<?php echo base_url(); ?>assets/img/admin.jpg" class="user-image" alt="User Image">
+            <img src="<?php echo base_url(); ?>assets/img/admin.png" class="user-image" alt="User Image">
             <span class="hidden-xs">Admin</span>
           </a>
           <ul class="dropdown-menu">
             <li class="user-header">
-              <img src="<?php echo base_url(); ?>assets/img/admin.jpg" class="img-circle" alt="User Image">
+              <img src="<?php echo base_url(); ?>assets/img/admin.png" class="img-circle" alt="User Image">
               <p>
                 Admin - Super Admin
                 <small>Member since 2018</small>
@@ -32,9 +32,6 @@
             </li>
           </ul>
         </li>
-        <li>
-          <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-        </li>
       </ul>
     </div>
   </nav>
@@ -44,7 +41,7 @@
   <section class="sidebar">
     <div class="user-panel">
       <div class="pull-left image">
-        <img src="<?php echo base_url(); ?>assets/img/admin.jpg" class="img-circle" alt="User Image">
+        <img src="<?php echo base_url(); ?>assets/img/admin.png" class="img-circle" alt="User Image">
       </div>
       <div class="pull-left info">
         <p>Admin</p>
@@ -65,8 +62,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="<?php echo base_url(); ?>users"><i class="fa fa-circle-o"></i> Data Table</a></li>
-          <li><a href="<?php echo base_url() ?>users/add"><i class="fa fa-circle-o"></i> Add Data</a></li>
+          <li><a href="<?php echo base_url(); ?>users"><i class="fa fa-circle-o text-blue"></i> Show Data</a></li>
+          <li><a href="<?php echo base_url() ?>users/add"><i class="fa fa-circle-o text-yellow"></i> Add Data</a></li>
         </ul>
       </li>
       <li class="treeview">
@@ -77,8 +74,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="<?php echo base_url(); ?>products"><i class="fa fa-circle-o"></i> Data Table</a></li>
-          <li><a href="<?php echo base_url(); ?>products/add"><i class="fa fa-circle-o"></i> Add Data</a></li>
+          <li><a href="<?php echo base_url(); ?>products"><i class="fa fa-circle-o text-blue"></i> Show Data</a></li>
+          <li><a href="<?php echo base_url(); ?>products/add"><i class="fa fa-circle-o text-yellow"></i> Add Data</a></li>
         </ul>
       </li>
       <li class="treeview">
@@ -89,8 +86,8 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="<?php echo base_url(); ?>suppliers"><i class="fa fa-circle-o"></i> Data Table</a></li>
-          <li><a href="<?php echo base_url() ?>suppliers/add"><i class="fa fa-circle-o"></i> Add Data</a></li>
+          <li><a href="<?php echo base_url(); ?>suppliers"><i class="fa fa-circle-o text-blue"></i> Show Data</a></li>
+          <li><a href="<?php echo base_url() ?>suppliers/add"><i class="fa fa-circle-o text-yellow"></i> Add Data</a></li>
         </ul>
       </li>
       <li class="treeview">
@@ -101,101 +98,88 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="<?php echo base_url(); ?>menus"><i class="fa fa-circle-o"></i> Data Table</a></li>
-          <li><a href="<?php echo base_url(); ?>menus/add"><i class="fa fa-circle-o"></i> Add Data</a></li>
+          <li><a href="<?php echo base_url(); ?>menus"><i class="fa fa-circle-o text-blue"></i> Show Data</a></li>
+          <li><a href="<?php echo base_url(); ?>menus/add"><i class="fa fa-circle-o text-yellow"></i> Add Data</a></li>
         </ul>
       </li>
+      <li class="header">INVENTORIES</li>
       <li class="treeview">
-        <a href="#">
-          <i class="fa fa-calendar"></i> <span>Inventories</span>
+        <a href="#"><i class="fa fa-folder"></i> <span>Product In</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li class="treeview">
-            <a href="#"><i class="fa fa-circle-o"></i> Product In
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="<?php echo base_url(); ?>product_in"><i class="fa fa-circle-o"></i> Data Table</a></li>
-              <li><a href="<?php echo base_url(); ?>product_in/add"><i class="fa fa-circle-o"></i> Add Data</a></li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="#"><i class="fa fa-circle-o"></i> Product Out
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="<?php echo base_url(); ?>product_out"><i class="fa fa-circle-o"></i> Data Table</a></li>
-              <li><a href="<?php echo base_url(); ?>product_out/add"><i class="fa fa-circle-o"></i> Add Data</a></li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="#"><i class="fa fa-circle-o"></i> Product Borrowed
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o"></i> Data Table</a></li>
-              <li><a href="#"><i class="fa fa-circle-o"></i> Add Data</a></li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="#"><i class="fa fa-circle-o"></i> Product Returned
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o"></i> Data Table</a></li>
-              <li><a href="#"><i class="fa fa-circle-o"></i> Add Data</a></li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="#"><i class="fa fa-circle-o"></i> Product Broken
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o"></i> Data Table</a></li>
-              <li><a href="#"><i class="fa fa-circle-o"></i> Add Data</a></li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="#"><i class="fa fa-circle-o"></i> Product Lost
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o"></i> Data Table</a></li>
-              <li><a href="#"><i class="fa fa-circle-o"></i> Add Data</a></li>
-            </ul>
-          </li>
+          <li><a href="<?php echo base_url(); ?>product_in"><i class="fa fa-circle-o text-blue"></i> Show Data</a></li>
+          <li><a href="<?php echo base_url(); ?>product_in/add"><i class="fa fa-circle-o text-yellow"></i> Add Data</a></li>
         </ul>
       </li>
       <li class="treeview">
-        <a href="#">
-          <i class="fa fa-print"></i> <span>Reports</span>
+        <a href="#"><i class="fa fa-folder"></i> <span>Product Out</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li>
-            <a href="#"><i class="fa fa-circle-o"></i> Inventories</a>
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-circle-o"></i> Transactions</a>
-          </li>
+          <li><a href="<?php echo base_url(); ?>product_out"><i class="fa fa-circle-o text-blue"></i> Show Data</a></li>
+          <li><a href="<?php echo base_url(); ?>product_out/add"><i class="fa fa-circle-o text-yellow"></i> Add Data</a></li>
         </ul>
+      </li>
+      <li class="treeview">
+        <a href="#"><i class="fa fa-folder"></i> <span>Product Borrowed</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="<?php echo base_url(); ?>product_borrowed"><i class="fa fa-circle-o text-blue"></i> Show Data</a></li>
+          <li><a href="<?php echo base_url(); ?>product_borrowed/add"><i class="fa fa-circle-o text-yellow"></i> Add Data</a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#"><i class="fa fa-folder"></i> <span>Product Returned</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="<?php echo base_url(); ?>product_returned"><i class="fa fa-circle-o text-blue"></i> Show Data</a></li>
+          <li><a href="<?php echo base_url(); ?>product_returned/add"><i class="fa fa-circle-o text-yellow"></i> Add Data</a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#"><i class="fa fa-folder"></i> <span>Product Broken</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="<?php echo base_url(); ?>product_broken"><i class="fa fa-circle-o text-blue"></i> Show Data</a></li>
+          <li><a href="<?php echo base_url(); ?>product_broken/add"><i class="fa fa-circle-o text-yellow"></i> Add Data</a></li>
+        </ul>
+      </li>
+      <li class="treeview">
+        <a href="#"><i class="fa fa-folder"></i> <span>Product Lost</span>
+          <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+          </span>
+        </a>
+        <ul class="treeview-menu">
+          <li><a href="<?php echo base_url(); ?>product_lost"><i class="fa fa-circle-o text-blue"></i> Show Data</a></li>
+          <li><a href="<?php echo base_url(); ?>product_lost/add"><i class="fa fa-circle-o text-yellow"></i> Add Data</a></li>
+        </ul>
+      </li>
+
+      <li class="header">REPORTS</li>
+      <li>
+        <a href="<?php echo base_url(); ?>inventories/reports">
+          <i class="fa fa-print"></i> <span>Inventories</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-print"></i> <span>Transactions</span>
+        </a>
       </li>
     </ul>
   </section>

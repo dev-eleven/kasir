@@ -29,7 +29,6 @@
   <script src="<?php echo base_url();?>assets/js/adminlte.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/jquery.slimscroll.min.js"></script>
   <script src="<?php echo base_url();?>assets/js/Chart.js"></script>
-  <script src="<?php echo base_url();?>assets/js/dashboard2.js"></script>
   <script src="<?php echo base_url();?>assets/js/demo.js"></script>
 </body>
 </html>

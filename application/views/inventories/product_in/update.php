@@ -34,7 +34,7 @@
                           <label>Product</label>
                           <select class="form-control select2" style="width: 100%" name="product_id" required>
                             <?php foreach ($product as $keys): 
-                              if ($key['products_id'] == $keys['id']) { 
+                              if ($key['product_id'] == $keys['id']) { 
                             ?>
                               <option value="<?= $keys['id'] ?>" selected><?= $keys['name'] ?></option>
                             <?php }else{ ?>
