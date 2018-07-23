@@ -5,6 +5,59 @@
 </head>
 <body>
 	<table border="1" width="100%" style="border-collapse: collapse; font-size: 12px;">
+    <tr>
+      <td colspan="6">
+       <table class="border-all" style="border-collapse: collapse; font-size: 12px;" width="100%">
+            <tr>
+                <td align="center" style="width:25%" rowspan="2">
+                   <h1>Report Inventories</h1>
+                </td>
+                <td style="border: 1px solid #000000; width: 40%" rowspan="2">
+                    <table style="font-size: 12px;">
+                        <tr>
+                          <td>Inventories</td>
+                          <td> : 
+                            <?php 
+                              if ($status == 1) {
+                                echo "Product In";
+                              } elseif ($status == 2) {
+                                echo "Product Out";
+                              } elseif ($status == 3) {
+                                echo "Product Borrowed";
+                              } elseif ($status == 4) {
+                                echo "Product Returned";
+                              } elseif ($status == 5) {
+                                echo "Product Broken";
+                              } elseif ($status == 6) {
+                                echo "Product Lost";
+                              }
+
+                            ?>
+                            
+                          </td>
+                        </tr>
+                        <tr>
+                            <td>Periode</td>
+                            <td> : <?= $periode ?></td>
+                        </tr>
+                        <tr>
+                            <td>Cetak</td>
+                            <td> : <?php echo date('d/m/Y') ?></td>
+                        </tr>
+                    </table>
+                </td>
+                <td align="center" width="10%" style="height:15px;"><b>Dibuat oleh</b></td>
+                <td align="center" width="10%"><b>Diperiksa oleh</b></td>
+                <td align="center" width="10%"><b>Diketahui oleh</b></td>
+            </tr>
+            <tr>
+                <td class="border-all"><br><br></td>
+                <td class="border-all"><br><br></td>
+                <td class="border-all"><br><br></td>
+            </tr>
+        </table>
+      </td>
+    <tr>
 		<tr>
 			<th style="width: 20px;">No</th>
       <th>Product</th>

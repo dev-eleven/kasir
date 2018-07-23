@@ -9,9 +9,11 @@
     </a>
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
-        <li>
-          <a href="<?php echo base_url(); ?>dashboard"><i class="fa fa-refresh"></i> Switch to inventories</a>
-        </li>
+        <?php if ($_SESSION['level'] == 1 ): ?>
+          <li>
+              <a href="<?php echo base_url(); ?>dashboard"><i class="fa fa-refresh"></i> Switch to inventories</a>
+          </li>
+        <?php endif ?>
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <img src="<?php echo base_url(); ?>assets/img/admin.png" class="user-image" alt="User Image">
@@ -51,21 +53,26 @@
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">MAIN NAVIGATION</li>
       <li>
-        <a href="<?php echo base_url(); ?>cashier">
+       <a href="<?php echo base_url(); ?>cashier">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
        </a>
       </li>
       <li class="treeview">
         <a href="#">
-          <i class="fa fa-users"></i> <span>Custumers</span>
+          <i class="fa fa-users"></i> <span>Members</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="<?php echo base_url() ?>customers"><i class="fa fa-circle-o  text-blue"></i> Show Data</a></li>
-          <li><a href="<?php echo base_url() ?>customers/add"><i class="fa fa-circle-o  text-yellow"></i> Add Data</a></li>
+          <li><a href="<?php echo base_url() ?>members"><i class="fa fa-circle-o  text-blue"></i> Show Data</a></li>
+          <li><a href="<?php echo base_url() ?>members/add"><i class="fa fa-circle-o  text-yellow"></i> Add Data</a></li>
         </ul>
+      </li>
+      <li>
+        <a href="<?php echo base_url(); ?>order_mobile">
+          <i class="fa fa-reorder"></i> <span>Order Mobile</span>
+        </a>
       </li>
     </ul>
   </section>

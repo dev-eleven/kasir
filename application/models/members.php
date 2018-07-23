@@ -1,5 +1,5 @@
 <?php
-class customers extends CI_Model{
+class members extends CI_Model{
 	public function __construct()
     {
         $this->load->database();
@@ -8,7 +8,7 @@ class customers extends CI_Model{
 	function data($limit,$start,$search){
 		$query = $this->db;
 		$query->select(array('*'))
-			  ->from('customers')
+			  ->from('members')
 			  ->order_by("id DESC")
 			  ->limit($limit, $start);
 
@@ -23,13 +23,13 @@ class customers extends CI_Model{
 	}
 
 	function jumlah_data(){
-		return $this->db->count_all("customers");
+		return $this->db->count_all("members");
 	}
 
 	function view($id){
 		$query = $this->db;
 		$query->select(array('*'))
-			  ->from('customers')
+			  ->from('members')
 			  ->where("id = ".$id);
 
 		$db = $query->get();
@@ -37,16 +37,16 @@ class customers extends CI_Model{
 	}
 
 	function add($params){
-		return $this->db->insert('customers', $params);
+		return $this->db->insert('members', $params);
 	}
 
 	function update($id,$data){
     	$this->db->where('id',$id);
-		$this->db->update('customers',$data);
+		$this->db->update('members',$data);
     }
 
 	function delete($id){
         $this->db->where('id',$id);
-        $this->db->delete('customers');    
+        $this->db->delete('members');    
     }
 }

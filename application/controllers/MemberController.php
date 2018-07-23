@@ -1,6 +1,6 @@
 <?php
 
-class CustomerController extends CI_Controller{
+class MemberController extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		if ($this->session->userdata('status') != 'login') {
@@ -13,7 +13,7 @@ class CustomerController extends CI_Controller{
 		$params = array();
 		$limit 	= 10;
 		$offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$jumlah_data = $this->customers->jumlah_data();
+		$jumlah_data = $this->members->jumlah_data();
 		$search = array();
 
 		if (isset($_POST['search'])) {
@@ -25,9 +25,9 @@ class CustomerController extends CI_Controller{
 		
 		if ($jumlah_data > 0) {
 			if (isset($_GET['per_page'])) {
-				$params['results'] = $this->customers->data($limit,$_GET['per_page'] - 1,$search);
+				$params['results'] = $this->members->data($limit,$_GET['per_page'] - 1,$search);
 			}else{
-				$params['results'] = $this->customers->data($limit,$offset,$search);
+				$params['results'] = $this->members->data($limit,$offset,$search);
 			}
 
 			$config['first_link']       = 'First';
@@ -60,7 +60,7 @@ class CustomerController extends CI_Controller{
 			$config['num_links'] = 2;
 			$config['page_query_string'] = TRUE;
 			$config['use_page_numbers'] = TRUE;
-			$config['base_url'] = base_url().'customers';
+			$config['base_url'] = base_url().'members';
 			$config['total_rows'] = $jumlah_data;
 			$config['per_page'] = $limit;
 			$config['uri_segment'] = 3;
@@ -69,38 +69,38 @@ class CustomerController extends CI_Controller{
 			$params["links"] = $this->pagination->create_links();
 		}
 		
-		$this->load->view('customers/index', $params);		
+		$this->load->view('members/index', $params);		
 	}
 
 	public function add(){
 		$params = array();
-		$this->load->view('customers/add',$params);
+		$this->load->view('members/add',$params);
 		if (isset($_POST['button'])) {
 			$params = [
 				"name" => $_POST['name'],
 				"address" => $_POST['address']
 			];
-			$this->customers->add($params);
-			redirect(base_url('customers'));
+			$this->members->add($params);
+			redirect(base_url('members'));
 		}	
 	}
 
 	public function update($id){
 		$params = array();
-		$params['results'] = $this->customers->view($id);
-		$this->load->view('customers/update',$params);
+		$params['results'] = $this->members->view($id);
+		$this->load->view('members/update',$params);
 		if (isset($_POST['button'])) {
 			$data = array(			
 				"name" => $_POST['name'],
 				"address" => $_POST['address']
 			);
-			$this->customers->update($id,$data);
-			redirect(base_url('customers'));
+			$this->members->update($id,$data);
+			redirect(base_url('members'));
 		}	
 	}
 
 	public function delete($id){
-		$this->customers->delete($id);
-		redirect(base_url('customers'));
+		$this->members->delete($id);
+		redirect(base_url('members'));
 	}
 }

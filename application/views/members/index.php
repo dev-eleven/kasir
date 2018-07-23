@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Warung Kopi || Customers</title>
+	<title>Warung Kopi || Members</title>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
@@ -22,7 +22,7 @@
           <div class="col-lg-12 col-xs-12">
             <div class="box box-primary">
               <div class="box-header with-border">
-                <h3 class="box-title">Data Customer</h3>
+                <h3 class="box-title">Data Members</h3>
                 <div class="box-tools">
                   <div class="input-group input-group-sm" style="width: 50px;">
                     <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-search"></i> Search</button>
@@ -51,8 +51,8 @@
                           <td><?= $key['address'] ?></td>
                           <td>
                             <div class="input-group-btn">
-                              <a href="<?php echo base_url('customers/update/').$key['id']?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
-                              <a href="<?php echo base_url('customercontroller/delete/').$key['id']?>" class="btn btn-danger" onclick="return doconfirm();"><i class="fa fa-trash"></i></a>
+                              <a href="<?php echo base_url('members/update/').$key['id']?>" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                              <a href="<?php echo base_url('membercontroller/delete/').$key['id']?>" class="btn btn-danger" onclick="return doconfirm();"><i class="fa fa-trash"></i></a>
                             </div>
                           </td>
                         </tr>

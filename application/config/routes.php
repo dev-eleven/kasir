@@ -52,14 +52,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 //Kasir
 $route['cashier'] = 'cashiercontroller/index';
+$route['cashier/order/(:any)'] = 'cashiercontroller/order/$1';
+
+//Mobile
+$route['order_mobile'] = 'mobilecontroller/index';
+$route['order_mobile/order/(:any)'] = 'mobilecontroller/order/$1';
 
 //Dashboard
 $route['dashboard'] = 'indexcontroller/index';
 
 //Customers
-$route['customers'] = 'customercontroller/index';
-$route['customers/add'] = 'customercontroller/add';
-$route['customers/update/(:any)'] = 'customercontroller/update/$1';
+$route['members'] = 'membercontroller/index';
+$route['members/add'] = 'membercontroller/add';
+$route['members/update/(:any)'] = 'membercontroller/update/$1';
 
 //Users
 $route['users'] = 'usercontroller/index';

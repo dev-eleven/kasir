@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Warung Kopi || Customers</title>
+	<title>Warung Kopi || Members</title>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-awesome.min.css">
@@ -23,28 +23,26 @@
           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="panel panel-primary">
               <div class="panel-heading">
-                Update Data
+                Add Data
               </div>
               <form method="post">
                 <div class="panel-body">
-                  <?php foreach ($results as $key): ?>
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <label>Name</label>
-                        <input type="text" name="name" class="form-control" value="<?= $key['name'] ?>">
-                      </div>
-                      <div class="col-lg-6">
-                        <label>Address</label>
-                        <textarea class="form-control" rows="4" name="address"><?= $key['name'] ?></textarea>
-                      </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <label>Name</label>
+                      <input type="text" name="name" class="form-control" required>
                     </div>
-                  <?php endforeach ?>
+                    <div class="col-lg-6">
+                      <label>Address</label>
+                      <textarea class="form-control" rows="4" name="address"></textarea>
+                    </div>
+                  </div>
                 </div>
                 <div class="panel-footer">
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <div class="pull-right">
-                        <a href="<?php echo base_url(); ?>customers" class="btn btn-default"><i class="fa fa-rotate-left"></i> Back</a>
+                        <a href="<?php echo base_url(); ?>members" class="btn btn-default"><i class="fa fa-rotate-left"></i> Back</a>
                         <button name="button" type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
                       </div>
                     </div>

@@ -13,7 +13,7 @@
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-box-body">
-       <div class="login-logo">
+      <div class="login-logo">
         <a href="<?php echo base_url();?>"><b>Warung</b> Kopi</a>
       </div>
       <form method="post">

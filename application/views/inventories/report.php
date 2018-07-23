@@ -42,7 +42,6 @@
                     <div class="col-md-4">
                       <label>Inventories</label>
                       <select name="status" class="form-control">
-                        <option value="all">All Product</option>
                         <option value="1">Product in</option>
                         <option value="2">Product out</option>
                         <option value="3">Product borrowed</option>

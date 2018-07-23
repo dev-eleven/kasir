@@ -34,8 +34,8 @@
           <div class="col-lg-3 col-xs-6">
             <div class="small-box" style="background-color: #7d490b; color: #fff;">
               <div class="inner">
-                <h3><?php echo $customers ?></h3>
-                <p>Customers</p>
+                <h3><?php echo $members ?></h3>
+                <p>Members</p>
               </div>
               <div class="icon">
                 <i class="fa fa-users"></i>

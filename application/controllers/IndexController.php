@@ -12,7 +12,7 @@ class IndexController extends CI_Controller{
 	public function index(){
 		$params = array();
 		$params['suppliers'] = $this->index->suppliers();
-		$params['customers'] = $this->index->customers();
+		$params['members'] = $this->index->members();
 		$params['menus'] = $this->index->menus();
 		$params['products'] = $this->index->products();
 		if (isset($_POST['Inventories'])) {

@@ -653,6 +653,8 @@ class InventorieController extends CI_Controller{
 				"status" => $_POST['status']
 			];
 			$params['results'] = $this->inventories->print_report($search);
+			$params['periode'] = $_POST['date'];
+			$params['status'] = $_POST['status'];
 
 			$this->load->view("inventories/print",$params);
 		} elseif (isset($_POST['excel'])) {

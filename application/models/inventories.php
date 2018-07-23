@@ -300,6 +300,13 @@ class inventories extends CI_Model
                 $query->where("date_broken BETWEEN '" . $search['start'] . "' AND '" . $search['end'] . "'");
             } elseif ($search['status'] == 6) {
                 $query->where("date_lost BETWEEN '" . $search['start'] . "' AND '" . $search['end'] . "'");
+            } else {
+                $query->where("date_in BETWEEN '" . $search['start'] . "' AND '" . $search['end'] . "'");
+                $query->where("date_out BETWEEN '" . $search['start'] . "' AND '" . $search['end'] . "'");
+                $query->where("date_lent BETWEEN '" . $search['start'] . "' AND '" . $search['end'] . "'");
+                $query->where("date_back BETWEEN '" . $search['start'] . "' AND '" . $search['end'] . "'");
+                $query->where("date_broken BETWEEN '" . $search['start'] . "' AND '" . $search['end'] . "'");
+                $query->where("date_lost BETWEEN '" . $search['start'] . "' AND '" . $search['end'] . "'");
             }
         } elseif (isset($search['product']) && $search['product'] != '') {
             $query->where("products.name LIKE '%" . $search['product'] . "%'");

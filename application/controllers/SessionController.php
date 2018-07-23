@@ -12,13 +12,19 @@ class SessionController extends CI_Controller{
 	        	$login = $this->users->login($email,$password);
 	        	if ($login) {
 	        		$data = [
-		        		'user_id' => $users_id,
+		        		'id' => $login[0]['id'],
 		        		'email'   => $email,
 		        		'logged_in' => true,
+		        		'level' => $login[0]['level'],
 	                    'status'    => 'login'
                 	];
                 	$this->session->set_userdata($data);
-                	redirect(base_url('dashboard'));
+                	if ($data['level'] == 1) {
+                		redirect(base_url('dashboard'));
+                	} else {
+                		redirect(base_url('cashier'));
+                	}
+                	
 	        	}else {
 	                $this->session->set_flashdata('login_failed', 'email atau password salah.');
 	                redirect(base_url());

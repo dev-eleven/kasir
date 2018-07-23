@@ -91,8 +91,8 @@ class index extends CI_Model{
         return $this->db->count_all("menus");
     }
 
-    public function customers(){
-        return $this->db->count_all("customers");
+    public function members(){
+        return $this->db->count_all("members");
     }
 
     public function products(){
