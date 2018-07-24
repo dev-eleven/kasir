@@ -36,6 +36,7 @@
                     <table class="table table-hover no-margin">
                       <thead style="background-color: #7d490b;color: #ffffff">
                         <th style="width: 10px">No</th>
+                        <th>Photo</th>
                         <th>Product</th>
                         <th>Title</th>
                         <th>Price</th>
@@ -47,6 +48,7 @@
                         foreach ($results as $key): ?>
                         <tr>
                           <td><?php echo $no++ ?></td>
+                          <td><img src="<?= base_url()?>assets/img/<?= $key['photo'] ?>" width="100px" height="auto"></td>
                           <td><a href="<?php echo base_url('products/view/').$key['product_id'] ?>"><?php echo $key['product'] ?></a></td>
                           <td><?php echo $key['title'] ?></td>
                           <td><?php echo $key['price'];?></td>

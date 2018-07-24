@@ -55,6 +55,9 @@
                         </div>
                       </div>
                     </div>
+                    <div class="col-md-6">
+                      <img src="<?= base_url()?>assets/img/<?= $key['photo'] ?>" style="width: 100%; padding:10px"> 
+                    </div>
                   </div>
                 <?php endforeach ?>
               </div>

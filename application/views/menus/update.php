@@ -26,7 +26,7 @@
               <div class="panel-heading">
                 Edit Data
               </div>
-              <form method="post">
+              <form method="post" enctype="multipart/form-data">
                 <div class="panel-body">
                   <?php foreach ($results as $key): ?>
                     <div class="row">
@@ -76,6 +76,10 @@
                             </select>
                           </div>
                         </div>
+                      </div>
+                      <div class="col-md-4">
+                        <label>Upload</label>
+                        <input type="file" name="photo" accept="image/*" required>
                       </div>
                     </div>
                   <?php endforeach ?>

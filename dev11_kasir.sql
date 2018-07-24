@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 23, 2018 at 11:56 AM
+-- Generation Time: Jul 24, 2018 at 02:41 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 5.6.33
 
@@ -93,6 +93,7 @@ CREATE TABLE `menus` (
   `title` varchar(50) NOT NULL,
   `price` int(11) NOT NULL,
   `type` enum('1','2','3') NOT NULL,
+  `photo` text NOT NULL,
   `created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -101,9 +102,10 @@ CREATE TABLE `menus` (
 -- Dumping data for table `menus`
 --
 
-INSERT INTO `menus` (`id`, `product_id`, `title`, `price`, `type`, `created`, `modified`) VALUES
-(1, 7, 'Indomie Goreng Sepesial', 3000, '3', '2018-07-06 19:49:23', '2018-07-06 19:49:23'),
-(3, 15, 'Tea Hangat', 2000, '1', '2018-07-06 20:35:46', '2018-07-06 20:35:46');
+INSERT INTO `menus` (`id`, `product_id`, `title`, `price`, `type`, `photo`, `created`, `modified`) VALUES
+(1, 7, 'Indomie Goreng Sepesial', 3000, '3', '', '2018-07-06 19:49:23', '2018-07-06 19:49:23'),
+(3, 15, 'Tea Hangat', 2000, '1', 'mobile.png', '2018-07-06 20:35:46', '2018-07-06 20:35:46'),
+(5, 15, 'bqwkb', 9999, '1', 'sampul1.jpg', '2018-07-24 16:51:21', '2018-07-24 16:51:21');
 
 -- --------------------------------------------------------
 
@@ -354,7 +356,7 @@ ALTER TABLE `members`
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `ordered_list`

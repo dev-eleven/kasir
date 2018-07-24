@@ -25,7 +25,7 @@
               <div class="panel-heading">
                 Add Data
               </div>
-              <form method="post">
+              <form method="post" enctype="multipart/form-data">
                 <div class="panel-body">
                   <div class="row">
                     <div class="col-md-4">
@@ -55,6 +55,10 @@
                           </select>
                         </div>
                       </div>
+                    </div>
+                    <div class="col-md-4">
+                      <label>Upload</label>
+                      <input type="file" name="photo" accept="image/*" required>
                     </div>
                   </div>
                 </div>

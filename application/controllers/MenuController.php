@@ -79,15 +79,27 @@ class MenuController extends CI_Controller{
 		$params['results'] = $this->menus->get_product();
 		$this->load->view('menus/add',$params);
 		if (isset($_POST['button'])) {
-			$params = [
-				"product_id" => $_POST['product_id'],
-				"title" => $_POST['title'],
-				"price" => $_POST['price'],
-				"type" => $_POST['type']
+			$config = [
+				"upload_path" => "./assets/img/",
+				"allowed_types" => "gif|jpg|jprg|png",
+				"encrpt_name" => true,
+				"max_size" => 10000
 			];
-			$this->menus->add($params);
-			redirect(base_url('menus'));
-		}	
+			$this->load->library('upload',$config);
+
+			if ($this->upload->do_upload('photo')) {
+				$photo = $this->upload->data();
+				$params = [
+					"product_id" => $_POST['product_id'],
+					"title" => $_POST['title'],
+					"price" => $_POST['price'],
+					"type" => $_POST['type'],
+					"photo" => $photo['file_name']
+				];
+				$this->menus->add($params);
+				redirect(base_url('menus'));
+			}
+		}
 	}
 
 	public function view($id){
@@ -106,10 +118,35 @@ class MenuController extends CI_Controller{
 				"product_id" => $_POST['product_id'],
 				"title" => $_POST['title'],
 				"price" => $_POST['price'],
-				"type" => $_POST['type']
+				"type" => $_POST['type'],
+				"photo" => $params['results'][0]['photo']
 			);
-			$this->menus->update($id,$data);
-			redirect(base_url('menus'));
+			if (isset($_FILES)) {
+				$config = [
+					"upload_path" => "./assets/img/",
+					"allowed_types" => "gif|jpg|jprg|png",
+					"encrpt_name" => true,
+					"max_size" => 10000
+				];
+				$this->load->library('upload',$config);
+				if ($this->upload->do_upload('photo')) {
+					$file = "./assets/img/".$params['results'][0]['photo'];
+					if (is_readable($file) && unlink($file)) {
+						$photo = $this->upload->data();
+						$data['photo'] = $photo['file_name'];
+						$this->menus->update($id,$data);
+						redirect(base_url('menus'));
+					} else {
+						$photo = $this->upload->data();
+						$data['photo'] = $photo['file_name'];
+						$this->menus->update($id,$data);
+						redirect(base_url('menus'));
+					}
+				}
+			} else {
+				$this->menus->update($id,$data);
+				redirect(base_url('menus'));
+			}
 		}	
 	}
 
